@@ -11,6 +11,8 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {
+    // 关闭缩进问题
+    "indent": ["off", 2],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }
