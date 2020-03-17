@@ -15,7 +15,7 @@
         <el-menu
           background-color="#20222A"
           text-color="#fff"
-          active-text-color="#ffd04b" unique-opened :collapse="isCollapse" :collapse-transition="false">
+          active-text-color="#ffd04b" unique-opened :collapse="isCollapse" :collapse-transition="false" router :default-active="activePath">
           <!--折叠展开按钮-->
           <div class="toggle-button" @click="toggleCollapse">
             <i class="el-icon-menu"></i>
@@ -31,7 +31,8 @@
             </template>
 
             <!--二级菜单-->
-            <el-menu-item :index="subItem.id + ''" :key="subItem.id" v-for="subItem in item.children">
+            <el-menu-item :index="'/' + subItem.path" :key="subItem.id" v-for="subItem in item.children"
+                          @click="saveNavState('/' + subItem.path)">
               <template slot="title">
                 <!--图标-->
                 <i class="el-icon-menu"></i>
@@ -43,7 +44,10 @@
         </el-menu>
       </el-aside>
       <!--右侧内容主题体-->
-      <el-main></el-main>
+      <el-main>
+
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -88,6 +92,11 @@
       // 点击按钮，切换菜单的折叠与展开
       toggleCollapse () {
         this.isCollapse = !this.isCollapse
+      },
+      // 保存链接的激活状态
+      saveNavState (activePath) {
+        window.sessionStorage.setItem('activePath', activePath)
+        this.activePath = activePath
       }
     }
   }
