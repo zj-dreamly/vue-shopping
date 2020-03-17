@@ -125,7 +125,7 @@
       border: 1px solid #eee;
       border-radius: 50%;
       padding: 10px;
-      box-shadow: 0 0 10px #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
       position: absolute;
       left: 50%;
       transform: translate(-50%, 15%);
@@ -135,7 +135,7 @@
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        background-color: #eee;
+        background-color: #ccc;
       }
     }
   }
@@ -144,7 +144,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 5px 30px;
+    padding: 10px 30px;
     box-sizing: border-box;
   }
 
