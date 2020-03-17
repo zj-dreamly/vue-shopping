@@ -10,4 +10,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+  body .el-table th.gutter{
+    display: table-cell!important;
+  }
+</style>
