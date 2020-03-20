@@ -145,7 +145,7 @@
     methods: {
       // 获取商品分类数据
       async getCateList () {
-        const { data: res } = await this.$http.get('categories', {
+        const { data: res } = await this.$http.get('/categories', {
           params: this.querInfo
         })
 
@@ -153,7 +153,6 @@
           return this.$message.error('获取商品分类失败！')
         }
 
-        console.log(res.data)
         // 把数据列表，赋值给 catelist
         this.catelist = res.data.result
         // 为总数据条数赋值
@@ -178,7 +177,7 @@
       },
       // 获取父级分类的数据列表
       async getParentCateList () {
-        const { data: res } = await this.$http.get('categories', {
+        const { data: res } = await this.$http.get('/categories', {
           params: { type: 2 }
         })
 
@@ -186,12 +185,10 @@
           return this.$message.error('获取父级分类数据失败！')
         }
 
-        console.log(res.data)
         this.parentCateList = res.data
       },
       // 选择项发生变化触发这个函数
       parentCateChanged () {
-        console.log(this.selectedKeys)
         // 如果 selectedKeys 数组中的 length 大于0，证明选中的父级分类
         // 反之，就说明没有选中任何父级分类
         if (this.selectedKeys.length > 0) {
@@ -210,7 +207,7 @@
       addCate () {
         this.$refs.addCateFormRef.validate(async valid => {
           if (!valid) return
-          const { data: res } = await this.$http.post('categories', this.addCateForm)
+          const { data: res } = await this.$http.post('/categories', this.addCateForm)
 
           if (res.meta.status !== 201) {
             return this.$message.error('添加分类失败！')
