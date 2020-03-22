@@ -173,7 +173,9 @@
         // 控制修改对话框的显示与隐藏
         editDialogVisible: false,
         // 修改的表单数据对象
-        editForm: {},
+        editForm: {
+          attr_name: ''
+        },
         // 修改表单的验证规则对象
         editFormRules: {
           attr_name: [
